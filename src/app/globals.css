@@ -1,0 +1,315 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* App-level semantic color tokens */
+  --color-app-header-bg: var(--app-header-bg);
+  --color-app-titlebar-bg: var(--app-titlebar-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-quaternary: var(--text-quaternary);
+  --color-text-placeholder: var(--text-placeholder);
+  --color-accent-blue: var(--accent-blue);
+  --color-icon-folder: var(--icon-folder);
+  --color-icon-image: var(--icon-image);
+  --color-icon-video: var(--icon-video);
+  --color-icon-audio: var(--icon-audio);
+  --color-icon-text: var(--icon-text);
+  --color-icon-code: var(--icon-code);
+  --color-icon-pdf: var(--icon-pdf);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-selected: var(--surface-selected);
+  --color-text-selected: var(--text-selected);
+  --color-divider: var(--divider);
+  --color-divider-light: var(--divider-light);
+  --color-search-bg: var(--search-bg);
+  --color-search-border: var(--search-border);
+  --color-search-border-focus: var(--search-border-focus);
+  --color-search-text: var(--search-text);
+  --color-search-icon: var(--search-icon);
+  --color-dropzone-bg: var(--dropzone-bg);
+  --color-dropzone-border: var(--dropzone-border);
+  --color-dropzone-text: var(--dropzone-text);
+  --color-empty-icon: var(--empty-icon);
+  --color-danger: var(--danger);
+  --color-sidebar-label: var(--sidebar-label);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-active-hover: var(--sidebar-active-hover);
+  --color-context-menu-bg: var(--context-menu-bg);
+  --color-context-menu-border: var(--context-menu-border);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.2 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0 0);
+  --primary: oklch(0.585 0.233 264);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.965 0 0);
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.965 0.003 264);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.945 0.02 264);
+  --accent-foreground: oklch(0.2 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.585 0.233 264);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.5rem;
+
+  /* Sidebar — verified from iCloud: #FBFBFD bg, #D1D1D6 border, #E5E5EA active */
+  --sidebar: #FBFBFD;
+  --sidebar-foreground: rgba(0, 0, 0, 0.88);
+  --sidebar-primary: #0071E3;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E5E5EA;
+  --sidebar-accent-foreground: rgba(0, 0, 0, 0.88);
+  --sidebar-border: #D1D1D6;
+  --sidebar-ring: #0071E3;
+  --sidebar-label: rgba(0, 0, 0, 0.56);
+  --sidebar-hover: rgba(0, 0, 0, 0.04);
+  --sidebar-active: #E5E5EA;
+  --sidebar-active-hover: #DCDCE0;
+
+  /* App chrome — verified: toolbar #F2F2F7, toolbar border #E5E5EA */
+  --app-header-bg: #FFFFFF;
+  --app-header-border: #E5E5EA;
+  --app-titlebar-bg: #F2F2F7;
+
+  /* Text — verified from iCloud computed styles */
+  --text-primary: rgba(0, 0, 0, 0.88);
+  --text-secondary: rgba(0, 0, 0, 0.56);
+  --text-tertiary: rgba(0, 0, 0, 0.48);
+  --text-quaternary: rgba(0, 0, 0, 0.25);
+  --text-placeholder: rgba(0, 0, 0, 0.48);
+
+  /* Accent & icon colors — iCloud accent: #0071E3 */
+  --accent-blue: #0071E3;
+  --icon-folder: #0071E3;
+  --icon-image: #34C759;
+  --icon-video: #AF52DE;
+  --icon-audio: #FF9500;
+  --icon-text: #8E8E93;
+  --icon-code: #5856D6;
+  --icon-pdf: #FF3B30;
+
+  /* Interactive surfaces */
+  --surface-hover: rgba(0, 0, 0, 0.04);
+  --surface-selected: #007AFF;
+  --text-selected: #FFFFFF;
+  --divider: #E5E5EA;
+  --divider-light: rgba(0, 0, 0, 0.04);
+
+  /* Search field */
+  --search-bg: #FFFFFF;
+  --search-border: rgba(0, 0, 0, 0.12);
+  --search-border-focus: rgba(0, 0, 0, 0.25);
+  --search-text: rgba(0, 0, 0, 0.88);
+  --search-icon: rgba(0, 0, 0, 0.48);
+
+  /* Context menu */
+  --context-menu-bg: #FFFFFF;
+  --context-menu-border: #E5E5EA;
+  --context-menu-shadow: rgba(0, 0, 0, 0.12);
+
+  /* Empty state */
+  --empty-icon: rgba(0, 0, 0, 0.15);
+
+  /* Drop zone */
+  --dropzone-bg: rgba(0, 113, 227, 0.08);
+  --dropzone-border: #0071E3;
+  --dropzone-text: #0071E3;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.35);
+
+  /* Danger */
+  --danger: #FF3B30;
+}
+
+.dark {
+  /* Verified from iCloud Drive computed styles */
+  --background: #1C1C1E;
+  --foreground: rgba(255, 255, 255, 0.98);
+  --card: #2C2C2E;
+  --card-foreground: rgba(255, 255, 255, 0.98);
+  --popover: #2C2C2E;
+  --popover-foreground: rgba(255, 255, 255, 0.98);
+  --primary: #0099FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2C2C2E;
+  --secondary-foreground: rgba(255, 255, 255, 0.98);
+  --muted: #2C2C2E;
+  --muted-foreground: rgba(255, 255, 255, 0.66);
+  --accent: #3A3A3C;
+  --accent-foreground: rgba(255, 255, 255, 0.98);
+  --destructive: #FF453A;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #0099FF;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  /* Sidebar — iCloud: #202023 bg, #000 right border, #343436 active */
+  --sidebar: #202023;
+  --sidebar-foreground: rgba(255, 255, 255, 0.98);
+  --sidebar-primary: #0099FF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #343436;
+  --sidebar-accent-foreground: rgba(255, 255, 255, 0.98);
+  --sidebar-border: #000000;
+  --sidebar-ring: #0099FF;
+  --sidebar-label: rgba(255, 255, 255, 0.66);
+  --sidebar-hover: rgba(255, 255, 255, 0.06);
+  --sidebar-active: #343436;
+  --sidebar-active-hover: #3A3A3C;
+
+  /* App chrome — iCloud: toolbar #323236, content area #1C1C1E */
+  --app-header-bg: #323236;
+  --app-header-border: #343436;
+  --app-titlebar-bg: #323236;
+
+  /* Text — verified from iCloud computed styles */
+  --text-primary: rgba(255, 255, 255, 0.98);
+  --text-secondary: rgba(255, 255, 255, 0.66);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --text-quaternary: rgba(255, 255, 255, 0.25);
+  --text-placeholder: rgba(255, 255, 255, 0.5);
+
+  /* Accent — iCloud uses #0099FF / #009AFF */
+  --accent-blue: #0099FF;
+  --icon-folder: #0099FF;
+  --icon-image: #30D158;
+  --icon-video: #BF5AF2;
+  --icon-audio: #FF9F0A;
+  --icon-text: #98989D;
+  --icon-code: #5E5CE6;
+  --icon-pdf: #FF453A;
+
+  /* Interactive surfaces */
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-selected: #29A9FF;
+  --text-selected: #FFFFFF;
+  --divider: rgba(255, 255, 255, 0.08);
+  --divider-light: rgba(255, 255, 255, 0.04);
+
+  /* Search field */
+  --search-bg: rgba(255, 255, 255, 0.08);
+  --search-border: rgba(255, 255, 255, 0.1);
+  --search-border-focus: rgba(255, 255, 255, 0.2);
+  --search-text: rgba(255, 255, 255, 0.98);
+  --search-icon: rgba(255, 255, 255, 0.5);
+
+  /* Context menu */
+  --context-menu-bg: #2C2C2E;
+  --context-menu-border: rgba(255, 255, 255, 0.1);
+  --context-menu-shadow: rgba(0, 0, 0, 0.5);
+
+  /* Empty state */
+  --empty-icon: rgba(255, 255, 255, 0.15);
+
+  /* Drop zone */
+  --dropzone-bg: rgba(0, 153, 255, 0.12);
+  --dropzone-border: #0099FF;
+  --dropzone-text: #64B5FF;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.35);
+
+  /* Danger */
+  --danger: #FF453A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* iCloud-style scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+}

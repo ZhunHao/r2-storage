@@ -1,0 +1,62 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "r2-storage",
+  "compatibility_date": "2026-04-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "build": {
+    "command": "npx opennextjs-cloudflare build"
+  },
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "routes": [
+    {
+      "pattern": "your-domain.example.com",
+      "custom_domain": true
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "WEBSITE_ASSETS",
+      "bucket_name": "your-bucket-name",
+      "remote": true
+    },
+    {
+      "binding": "EXPLORER_TEST",
+      "bucket_name": "your-second-bucket",
+      "remote": true
+    }
+  ],
+  "ai": {
+    "binding": "AI",
+    "remote": true
+  },
+  "vectorize": [
+    {
+      "binding": "VECTOR_INDEX",
+      "index_name": "r2-files",
+      "remote": true
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "r2-storage-activity",
+      "database_id": "YOUR_D1_DATABASE_ID",
+      "remote": true
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "LISTINGS_KV",
+      "id": "YOUR_KV_NAMESPACE_ID",
+      "preview_id": "YOUR_KV_PREVIEW_ID",
+      "remote": true
+    }
+  ],
+  "vars": {
+    "AI_GATEWAY_NAME": "r2-storage"
+  }
+}
